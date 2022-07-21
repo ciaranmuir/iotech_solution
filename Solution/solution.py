@@ -86,5 +86,5 @@ def parse_json_file(file):
         data = json.load(f)
     return data
         
-create_new_devices_json('data/devices.json', 'new_devices4.json')
-sort_devices('new_devices4.json', 'new_devices5_sorted.json')
+create_new_devices_json('data/devices.json', 'new_devices.json')
+sort_devices('new_devices.json', 'new_devices_sorted.json')
