@@ -9,7 +9,7 @@ Created on Mon Jul 18 19:23:35 2022
 import json
 import re
 
-# Creates unsorted json file for devices in specified format
+# Creates unsorted json file for devices in specified format from original devices.json (or any other file using similar schema)
 def create_new_devices_json(old_file, new_file):
     devices_dict = {"Devices": []}
     device_list = parse_devices(old_file)
@@ -39,7 +39,7 @@ def parse_devices(file):
         device_list.append(dev)
     return device_list
         
-# Takes file created by create_new_devices_json()
+# Takes and sorts reformatted file created by create_new_devices_json() and places in new file specified in second argument 'new_file'
 def sort_devices(old_file, new_file):
     parsed_file = parse_json_file(old_file)
     devices = parsed_file['Devices']
@@ -85,6 +85,7 @@ def parse_json_file(file):
     with open(file, 'r') as f:
         data = json.load(f)
     return data
-        
+
+#Takes devices.json and creates two new files in specified schema - both sorted and unsorted.
 create_new_devices_json('data/devices.json', 'new_devices.json')
 sort_devices('new_devices.json', 'new_devices_sorted.json')
